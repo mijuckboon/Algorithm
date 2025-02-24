@@ -4,20 +4,27 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
 
         int cases = Integer.parseInt(br.readLine());
         for (int i = 0; i < cases; i++) {
             String quiz = br.readLine();
-            String[] splittedByX = quiz.split("X");
             int sum = 0;
-            for (int j = 0; j < splittedByX.length; j++) {
-                int consecutive = splittedByX[j].length();
-                sum += consecutive * (consecutive + 1)/2;
+            int score = 0;
+            for (int j = 0; j < quiz.length(); j++) {
+                char ch = quiz.charAt(j);
+                if (ch == 'O') {
+                    score += 1;
+                } else {
+                    score = 0;
+                }
+                sum += score;
             }
-            bw.write(Integer.toString(sum));
-            bw.newLine();
+            sb.append(sum);
+            sb.append(System.lineSeparator());
         }
+        bw.write(sb.toString());
         bw.flush();
-
+        bw.close();
     }
 }
