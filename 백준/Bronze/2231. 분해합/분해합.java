@@ -7,7 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         int number = Integer.parseInt(input);
-        for (int i = 1; i < number; i++) {
+        for (int i = Math.max(1, number - 9 * input.length()); i < number; i++) {
             if (number == getSeparateSum(String.valueOf(i))) {
                 System.out.println(i);
                 return;
