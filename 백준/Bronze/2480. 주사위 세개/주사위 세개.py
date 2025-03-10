@@ -1,0 +1,6 @@
+l=list(map(int,input().split()))
+l.sort()
+if l[0]==l[2]: print((10+l[0])*1000)
+elif l[0]==l[1]: print((10+l[0])*100)
+elif l[1]==l[2]: print((10+l[1])*100)
+else: print(l[2]*100)
