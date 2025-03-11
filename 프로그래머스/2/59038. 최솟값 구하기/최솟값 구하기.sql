@@ -1,0 +1,3 @@
+-- 코드를 입력하세요
+SELECT MIN(DATETIME) -- DISTINCT 불필요
+FROM ANIMAL_INS;
