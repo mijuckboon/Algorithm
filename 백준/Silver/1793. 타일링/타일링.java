@@ -34,7 +34,7 @@ public class Main {
                 continue;
             }
             // 가로 길이 1인 직사각형(i-1), 가로 길이 2인 직사각형(i-2), 정사각형(i-2)
-            dp[i] = dp[i - 1].add(dp[i-2].multiply(BigInteger.TWO));
+            dp[i] = dp[i - 1].add(dp[i-2].multiply(new BigInteger("2")));
         }
         return dp[num];
     }
