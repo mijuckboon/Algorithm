@@ -3,7 +3,8 @@ import java.util.*;
 class Solution {
     public int solution(int[][] board, int[] moves) {
         List<Stack<Integer>> lines = new ArrayList<>();
-        // Stack<Integer>[] lines = new Stack<Integer>[board[0].length]; // generic array creation
+        // Stack<Integer>[] lines = new Stack<>[board[0].length]; // error : cannot create array with '<>'
+        // Stack<Integer>[] lines = new Stack<Integer>[board[0].length]; // error : generic array creation
         for (int j = 0; j < board[0].length; j++) {
             lines.add(new Stack<Integer>());
             for (int i = board.length - 1; i >= 0; i--) {
