@@ -9,9 +9,6 @@ class Solution {
         Map<String, Integer> searched = new HashMap<>();
         for (int i = 0; i < number.length; i++) {
             desired.put(want[i], number[i]);
-            // if (searched.containsKey(discount[i])) {
-                
-            // }
         }
         
         for (int i = 0; i < LEN; i++) {
@@ -21,14 +18,11 @@ class Solution {
         for (int i = 0; i < discount.length - LEN; i++) {
             if (desired.equals(searched)) { count += 1; }
             if (searched.containsKey(discount[i])) {
-            // if (desired.containsKey(discount[i]) && searched.containsKey(discount[i])) {
                 int value = searched.get(discount[i]);
                 if (value == 1) { searched.remove(discount[i]); }
                 else { searched.put(discount[i], value - 1); }
             }
-            // if (desired.containsKey(discount[i + LEN])) {
                 searched.put(discount[i + LEN], searched.getOrDefault(discount[i + LEN], 0) + 1);
-            // }
         }
         if (desired.equals(searched)) { count += 1; }
              
