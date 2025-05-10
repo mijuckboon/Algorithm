@@ -5,7 +5,8 @@ class Solution {
     
     private int find(int x) {
         if (parent[x] == x) return x;
-        return parent[x] = find(parent[x]); // 경로 압축
+        parent[x] = find(parent[x]); // 경로 압축
+        return parent[x];
     }
     
     private void union(int a, int b) {
@@ -19,16 +20,23 @@ class Solution {
         parent = new int[n];
         for (int i = 0; i < n; i++) parent[i] = i;
 
-        int total = 0;
+        int totalCost = 0;
+        int count = 1; // 출발점에서 시작하여 연결된 node 수 count
+        
         for (int[] edge : costs) {
             int from = edge[0];
             int to = edge[1];
             int cost = edge[2];
-            if (find(from) != find(to)) {
-                union(from, to);
-                total += cost;
+            if (find(from) != find(to)) { // 연결되지 않은 경우
+                union(from, to); // 연결
+                totalCost += cost;
+                count += 1;
+            }
+            
+            if (count == n) {
+                break;
             }
         }
-        return total;
+        return totalCost;
     }
 }
