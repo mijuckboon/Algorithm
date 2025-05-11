@@ -18,7 +18,7 @@ class Solution {
             adjList.get(edge[0]).add(edge[1]); // 부모 -> 자식 연결
         }
 
-        // 상태 관리 객체로 DFS 시작 
+        // DFS 시작 (전체 경로 탐색)
         dfs(new State(0, 0, 0, new ArrayList<>(List.of(0))), info);
         return maxSheep;
     }
