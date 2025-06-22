@@ -7,12 +7,15 @@ class Solution {
         
         while (!target.equals("1")) {
             count += 1;
-            for (char ch : target.toCharArray()) {
-                if (ch == '0') {
-                    deletedZeros += 1;
-                }
-            }
-            // deletedZeros += target.toCharArray().stream().filter(char -> char == '0').count();
+            // for (char ch : target.toCharArray()) {
+            //     if (ch == '0') {
+            //         deletedZeros += 1;
+            //     }
+            // }
+            
+            deletedZeros += target.chars().filter(ch -> ch == '0').count();
+            // deletedZeros += Arrays.stream(target.toCharArray()).filter(ch -> ch == '0').count();
+            // char는 변수명으로 사용 불가
             target = target.replace("0", ""); // target.replace("0", ""); -> 무한 루프 도는 듯
             int len = target.length();
             target = getBinaryString(len);
