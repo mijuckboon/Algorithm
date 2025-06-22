@@ -25,12 +25,12 @@ class Solution {
     }
     
     String getBinaryString(int n) {
-        String str = "";
+        StringBuilder sb = new StringBuilder();
         while (n > 0) {
-            str = Integer.toString(n % 2) + str;
+            sb.append(n % 2);
             n /= 2;
         }
         
-        return str;
+        return sb.reverse().toString();
     }
 }
