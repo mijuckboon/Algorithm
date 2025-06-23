@@ -7,43 +7,68 @@ class Solution {
         final int xMax = (board[0] - 1) / 2; // 절댓값의 최대
         final int yMax = (board[1] - 1) / 2;
         
-        int[] coordinate = new int[] {0, 0}; // 참조형
-        int[] newCoordinate = new int[] {0, 0};
+        // int[] coordinate = new int[] {0, 0}; // 참조형
+        // int[] newCoordinate = new int[] {0, 0};
+        int x = 0;
+        int y = 0;
         
         for (String input: keyinput) {
-            move(newCoordinate, input);
-            if (isValid(newCoordinate[0], newCoordinate[1], xMax, yMax)) {
-                coordinate[0] = newCoordinate[0];
-                coordinate[1] = newCoordinate[1];
+            
+            int newX = x + moveX[move(input)];
+            int newY = y + moveY[move(input)];
+            
+            if (isValid(newX, newY, xMax, yMax)) {
+                x = newX;
+                y = newY;
             }
-            if (!isValid(newCoordinate[0], newCoordinate[1], xMax, yMax)) {
-                newCoordinate[0] = coordinate[0];
-                newCoordinate[1] = coordinate[1];
-            }
+            
+            // move(newCoordinate, input);
+            // if (isValid(newCoordinate[0], newCoordinate[1], xMax, yMax)) {
+            //     coordinate[0] = newCoordinate[0];
+            //     coordinate[1] = newCoordinate[1];
+            // }
+            // if (!isValid(newCoordinate[0], newCoordinate[1], xMax, yMax)) {
+            //     newCoordinate[0] = coordinate[0];
+            //     newCoordinate[1] = coordinate[1];
+            // }
         }
         
-        return coordinate;
+        return new int[] {x, y};
     }
     
     private boolean isValid(int x, int y, int xMax, int yMax) {
         return Math.abs(x) <= xMax && Math.abs(y) <= yMax;
     }
     
-    private void move(int[] coordinate, String input) {
+    private int move(String input) {
         switch (input) {
             case "up":
-                coordinate[1] += moveY[0];
-                break;
+                return 0;
             case "down":
-                coordinate[1] += moveY[1];
-                break;
+                return 1;
             case "left":
-                coordinate[0] += moveX[2];
-                break;
+                return 2;
             case "right":
-                coordinate[0] += moveX[3];
-                break;
+                return 3;
         }
+        return -1; // 없으면 missing return statement error
     }
+    
+    // private void move(int[] coordinate, String input) {
+    //     switch (input) {
+    //         case "up":
+    //             coordinate[1] += moveY[0];
+    //             break;
+    //         case "down":
+    //             coordinate[1] += moveY[1];
+    //             break;
+    //         case "left":
+    //             coordinate[0] += moveX[2];
+    //             break;
+    //         case "right":
+    //             coordinate[0] += moveX[3];
+    //             break;
+    //     }
+    // }
     
 }
