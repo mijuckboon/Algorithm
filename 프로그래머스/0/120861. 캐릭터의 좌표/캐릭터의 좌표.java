@@ -71,4 +71,20 @@ class Solution {
     //     }
     // }
     
+    /* 아래와 같은 형태도 가능 */
+    // private static final Map<String, int[]> direction = Map.of(
+    //     "up", new int[]{0, 1},
+    //     "down", new int[]{0, -1},
+    //     "left", new int[]{-1, 0},
+    //     "right", new int[]{1, 0}
+    // );
+    
+    // private static final int[][] directions = {
+    //     {0, 0, -1, 1},
+    //     {1, -1, 0, 0} 
+    // };
+    // int dir = move(input);
+    // int newX = x + directions[0][dir]; 
+    // int newY = y + directions[1][dir];
+    
 }
