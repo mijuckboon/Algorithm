@@ -4,7 +4,8 @@ class Solution {
         int[] count = new int[10];
         
         for (int i = 0; i < input.length(); i++) {
-            int digit = Integer.parseInt(input.charAt(i) + "");
+            int digit = Integer.parseInt(Character.toString(input.charAt(i)));
+            // int digit = Integer.parseInt(input.charAt(i) + "");
             count[digit] += 1;
         }
         
