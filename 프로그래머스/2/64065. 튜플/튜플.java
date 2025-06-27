@@ -4,7 +4,8 @@ import java.util.stream.*;
 class Solution {
     public int[] solution(String s) {
         String[] sets = s.substring(2, s.length() - 2) // 양 끝 중괄호 제거 (2개씩)
-            .split("\\},\\{"); // regex 
+            .split("},\\{"); // regex
+        // System.out.println(Arrays.toString(sets));
         
 //         List<String[]> braceRemovedSets = Arrays.stream(sets)
 //             .map(set -> set.split(","))
