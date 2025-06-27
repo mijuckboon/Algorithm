@@ -4,14 +4,7 @@ import java.util.stream.*;
 class Solution {
     public int[] solution(String s) {
         String[] sets = s.substring(2, s.length() - 2) // 양 끝 중괄호 제거 (2개씩)
-            .split("},\\{"); // regex
-        // System.out.println(Arrays.toString(sets));
-        
-//         List<String[]> braceRemovedSets = Arrays.stream(sets)
-//             .map(set -> set.split(","))
-//             .collect(Collectors.toList());
-        
-//         braceRemovedSets.sort(Comparator.comparingInt(x -> x.length));
+            .split("\\},\\{"); // regex
         
         List<List<String>> setList = Arrays.stream(sets)
             .map(str -> new ArrayList<>(Arrays.asList(str.split(","))))
@@ -32,5 +25,31 @@ class Solution {
         }
         
         return tuple.stream().mapToInt(x -> x).toArray();
+    }
+    
+    public int[] solution2(String s) {
+        String[] sets = s.substring(2, s.length() - 2) // 양 끝 중괄호 제거 (2개씩)
+            .split("},\\{");
+        
+        List<String[]> braceRemovedSets = Arrays.stream(sets)
+            .map(set -> set.split(","))
+            .collect(Collectors.toList());
+        
+        braceRemovedSets.sort(Comparator.comparingInt(x -> x.length));
+        
+        Set<String> seen = new HashSet<>();
+        List<Integer> tuple = new ArrayList<>();
+
+        for (String[] currentSet : braceRemovedSets) {
+            for (String str : currentSet) {
+                if (!seen.contains(str)) {
+                    seen.add(str);
+                    tuple.add(Integer.parseInt(str));
+                    break;
+                }
+            }
+        }
+
+        return tuple.stream().mapToInt(i -> i).toArray();
     }
 }
