@@ -20,10 +20,12 @@ class Solution
             }
         }
         
-        int side = Arrays.stream(board)                     
-                 .mapToInt(row -> Arrays.stream(row).max().orElse(0)) // 여기 map 썼을 때 실패
-                 .max()                              
-                 .orElse(0);
+        int side = 0;
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+                side = Math.max(board[i][j], side);
+            }
+        }
         return side * side;
     }
 }
