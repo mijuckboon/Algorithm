@@ -12,7 +12,7 @@ class Solution {
         for (int i = 2; i < len; i++) {
             maxWithoutFirstHouse[i] = Math.max(maxWithoutFirstHouse[i - 2] + money[i], maxWithoutFirstHouse[i - 1]);
             
-            if (i == len - 1) {
+            if (i == len - 1) { // 어차피 len - 2까지만 조사하므로 굳이 없어도 무방
                 break;
             }
             maxWithFirstHouse[i] = Math.max(maxWithFirstHouse[i - 2] + money[i], maxWithFirstHouse[i - 1]);
