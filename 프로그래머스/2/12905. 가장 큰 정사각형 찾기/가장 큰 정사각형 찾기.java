@@ -14,17 +14,16 @@ class Solution
                     int diag = board[i - 1][j - 1];
                     int left = board[i][j - 1];
                     
+                    // 스트림 썼더니 시간 초과
                     board[i][j] = Math.min(Math.min(up, diag), left) + 1;                    
                 }
             }
         }
         
-        int side = 0;
-        for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < colCount; j++) {
-                side = Math.max(board[i][j], side);
-            }
-        }
+        int side = Arrays.stream(board)                     
+                 .mapToInt(row -> Arrays.stream(row).max().orElse(0)) // 여기 map 썼을 때 실패
+                 .max()                              
+                 .orElse(0);
         return side * side;
     }
 }
