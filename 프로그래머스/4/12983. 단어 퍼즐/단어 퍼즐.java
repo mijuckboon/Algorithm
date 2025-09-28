@@ -12,12 +12,11 @@ class Solution {
         minWordCount[0] = 0;
             
         Set<String> words = new HashSet<>(Arrays.asList(strs));
-        Set<Integer> lengths = new HashSet<>();
         
-        for (String str: strs) {
-            lengths.add(str.length());
-        }
-               
+        Set<Integer> lengths = Arrays.stream(strs)
+            .map(String::length)
+            .collect(Collectors.toCollection(HashSet::new));
+        
         for (int i = 1; i <= len; i++) {
             
             for (int length: lengths) {
